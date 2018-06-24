@@ -5,4 +5,4 @@ from .models import *
 
 @admin.register(UserDetails)
 class UserDetailsAdmin(admin.ModelAdmin):
-    list_display = ('username', 'created_at', 'last_updated')
+    list_display = ('username', 'image_tag', 'created_at', 'last_updated')

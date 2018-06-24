@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
+from django.conf import settings
 # Create your models here.
 
 
@@ -35,3 +35,7 @@ class UserDetails(models.Model):
 
     def __str__(self):
         return str(self.username)
+
+    def image_tag(self):
+        return u'<img style="width:200px;height:200px;" src="%s" />' % "{0}{1}".format(settings.MEDIA_URL, self.image)
+    image_tag.allow_tags = True
