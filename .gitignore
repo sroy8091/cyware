@@ -1,1 +1,5 @@
 .idea/
+*.pyc
+.env
+cyware/__pycache__/settings.cpython-35.pyc
+media/
