@@ -16,7 +16,7 @@ import shutil
 
 
 def gitapi(**kwargs):
-    url = "https://api.github.com/search/users?q={0}+".format(kwargs['name'])
+    url = "https://api.github.com/search/users?q={0}".format(kwargs['name'])
     if kwargs.get('gt_repos') and kwargs.get('lt_repos'):
         url = url + "repos:{0}..{1}+".format(kwargs.get('gt_repos'), kwargs.get('lt_repos'))
     else:

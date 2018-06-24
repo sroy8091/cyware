@@ -6,3 +6,5 @@ from .models import *
 @admin.register(UserDetails)
 class UserDetailsAdmin(admin.ModelAdmin):
     list_display = ('username', 'image_tag', 'created_at', 'last_updated')
+    search_fields = ('username', 'email', )
+    list_filter = ('created_at',)
