@@ -7,7 +7,7 @@ from django.db.models import Sum, Count
 @admin.register(UserDetails)
 class UserDetailsAdmin(admin.ModelAdmin):
     list_display = ('username', 'image_tag', 'created_at', 'last_updated')
-    search_fields = ('username', 'email',)
+    search_fields = ('created_at', 'username', 'email',)
     list_filter = ('created_at',)
 
 
