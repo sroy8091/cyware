@@ -4,11 +4,12 @@ import requests
 from rest_framework.views import APIView
 from .serializer import UserSearchSerializer
 import json
-from .models import UserDetails
+from .models import UserDetails, Hits
 from rest_framework import status
 from rest_framework.response import Response
 import uuid
 import shutil
+from datetime import datetime
 
 
 
@@ -34,7 +35,12 @@ def gitapi(**kwargs):
     if kwargs.get('location'):
         url = url + "location:{0}+".format(kwargs['location'])
     url = url + "&client_id={0}&client_secret={1}".format(settings.CLIENT_ID, settings.CLIENT_SECRET)
-    print(url)
+    # print(url)
+    key = "hit_url_per_day"
+    today_date = datetime.now().date()
+    total_hit = Hits.objects.get_or_create(key=key, created_at=today_date)[0]
+    total_hit.value += 1
+    total_hit.save()
     return url
 
 

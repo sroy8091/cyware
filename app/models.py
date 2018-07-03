@@ -39,3 +39,27 @@ class UserDetails(models.Model):
     def image_tag(self):
         return u'<img style="width:200px;height:200px;" src="%s" />' % "{0}{1}".format(settings.MEDIA_URL, self.image)
     image_tag.allow_tags = True
+
+
+class UserSummary(UserDetails):
+    class Meta:
+        proxy = True
+        verbose_name = 'User Added Summary'
+        verbose_name_plural = 'Users Added Summary'
+
+
+class Hits(models.Model):
+    key = models.CharField(max_length=250, blank=True, null=True)
+    value = models.IntegerField(default=0)
+    created_at = models.DateField(auto_now_add=True, null=True)
+    last_updated = models.DateField(auto_now=True, null=True)
+
+    def __str__(self):
+        return str(self.key)
+
+
+class HitsSummary(Hits):
+    class Meta:
+        proxy = True
+        verbose_name = 'Hits Summary'
+        verbose_name_plural = 'Hits Summary'
