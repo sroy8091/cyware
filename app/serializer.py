@@ -15,8 +15,4 @@ class UserSearchSerializer(serializers.Serializer):
         min_value=0, max_value=100000, required=False)
     et_followers = serializers.IntegerField(
         min_value=0, max_value=100000, required=False)
-    gt_created = serializers.DateField(required=False)
-    lt_created = serializers.DateField(required=False)
-    et_created = serializers.DateField(required=False)
     location = serializers.CharField(max_length=100, required=False)
-    language = serializers.CharField(max_length=100, required=False)

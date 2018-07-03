@@ -10,9 +10,6 @@ from rest_framework.response import Response
 import uuid
 import shutil
 from datetime import datetime
-
-
-
 # Create your views here.
 
 
@@ -67,7 +64,7 @@ class SearchUser(APIView):
                     user.repos_url = user_data['repos_url']
                     user.save()
                     try:
-                        uuid_code = str(uuid.uuid4())+'.jpg'
+                        uuid_code = str(uuid.uuid4()) + '.jpg'
                         image_url = "{0}/{1}".format(settings.MEDIA_ROOT, uuid_code)
                         response = requests.get(user_data['avatar_url'], stream=True)
                         with open(image_url, 'wb') as out_file:
@@ -79,6 +76,8 @@ class SearchUser(APIView):
                         print(e)
                 return Response({"success": True})
             else:
-                return Response({"success": False, "message": "Validation Failed.", "errors": data.read()}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+                return Response({"success": False, "message": "Validation Failed.", "errors": data.read()},
+                                status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         else:
-            return Response({"message": "Validation Failed.", "errors": user_data.errors}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({"message": "Validation Failed.", "errors": user_data.errors},
+                            status=status.HTTP_422_UNPROCESSABLE_ENTITY)

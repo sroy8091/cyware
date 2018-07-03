@@ -7,7 +7,7 @@ from django.db.models import Sum, Count
 @admin.register(UserDetails)
 class UserDetailsAdmin(admin.ModelAdmin):
     list_display = ('username', 'image_tag', 'created_at', 'last_updated')
-    search_fields = ('username', 'email', )
+    search_fields = ('username', 'email',)
     list_filter = ('created_at',)
 
 
@@ -27,7 +27,7 @@ class UserSummaryAdmin(admin.ModelAdmin):
             return response
 
         metrics = {
-        'total': Count('username'),
+            'total': Count('username'),
         }
 
         response.context_data['summary_total'] = dict(
@@ -39,7 +39,7 @@ class UserSummaryAdmin(admin.ModelAdmin):
 
 @admin.register(Hits)
 class HitsAdmin(admin.ModelAdmin):
-    search_fields = ('key', 'value', )
+    search_fields = ('key', 'value',)
     list_display = ('key', 'value', 'created_at')
 
 
@@ -59,7 +59,7 @@ class HitsSummaryAdmin(admin.ModelAdmin):
             return response
 
         metrics = {
-        'total': Sum('value'),
+            'total': Sum('value'),
         }
 
         response.context_data['summary_total'] = dict(

@@ -38,6 +38,7 @@ class UserDetails(models.Model):
 
     def image_tag(self):
         return u'<img style="width:200px;height:200px;" src="%s" />' % "{0}{1}".format(settings.MEDIA_URL, self.image)
+
     image_tag.allow_tags = True
 
 
