@@ -27,8 +27,8 @@ class UserDetails(models.Model):
         _('Subscriptions Url'), max_length=250, blank=True, null=True)
     organizations_url = models.CharField(
         _('Organizations Url'), max_length=250, blank=True, null=True)
-    repos_url = models.CharField(
-        _('Repos Url'), max_length=250, blank=True, null=True)
+    repos = models.IntegerField(
+        _('Repos'), blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     last_updated = models.DateTimeField(auto_now=True, null=True)
     image = models.ImageField(upload_to='%Y/%m/%d', null=True, blank=True)

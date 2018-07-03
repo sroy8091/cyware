@@ -61,7 +61,6 @@ class SearchUser(APIView):
                     user.starred_url = user_data['starred_url']
                     user.subscriptions_url = user_data['subscriptions_url']
                     user.organizations_url = user_data['organizations_url']
-                    user.repos_url = user_data['repos_url']
                     user.save()
                     try:
                         uuid_code = str(uuid.uuid4()) + '.jpg'
@@ -71,6 +70,14 @@ class SearchUser(APIView):
                             shutil.copyfileobj(response.raw, out_file)
                         del response
                         user.image = uuid_code
+                        api_url = "{0}?client_id={1}&client_secret={2}"\
+                            .format(user_data['url'], settings.CLIENT_ID, settings.CLIENT_SECRET)
+                        print(api_url)
+                        req = requests.get(api_url)
+                        prof_data = req.json()
+                        # print(prof_data)
+                        user.email = prof_data['email']
+                        user.repo = prof_data['public_repos']
                         user.save()
                     except Exception as e:
                         print(e)
