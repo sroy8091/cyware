@@ -77,7 +77,7 @@ class SearchUser(APIView):
                         prof_data = req.json()
                         # print(prof_data)
                         user.email = prof_data['email']
-                        user.repo = prof_data['public_repos']
+                        user.repos = prof_data['public_repos']
                         user.save()
                     except Exception as e:
                         print(e)
