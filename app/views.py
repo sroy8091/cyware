@@ -71,7 +71,7 @@ class SearchUser(APIView):
                         user.image = uuid_code
                         api_url = "{0}?client_id={1}&client_secret={2}"\
                             .format(user_data['url'], settings.CLIENT_ID, settings.CLIENT_SECRET)
-                        print(api_url)
+                        # print(api_url)
                         req = requests.get(api_url)
                         prof_data = req.json()
                         # print(prof_data)
