@@ -55,7 +55,6 @@ class SearchUser(APIView):
                     user.gravatar_id = user_data["gravatar_id"]
                     user.url = user_data['url']
                     user.html_url = user_data['html_url']
-                    user.followers_url = user_data['followers_url']
                     user.following_url = user_data['following_url']
                     user.gists_url = user_data['gists_url']
                     user.starred_url = user_data['starred_url']
@@ -78,6 +77,8 @@ class SearchUser(APIView):
                         # print(prof_data)
                         user.email = prof_data['email']
                         user.repos = prof_data['public_repos']
+                        user.location = prof_data['location']
+                        user.followers = prof_data['followers']
                         user.save()
                     except Exception as e:
                         print(e)

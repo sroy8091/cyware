@@ -15,8 +15,8 @@ class UserDetails(models.Model):
     url = models.CharField(_('Url'), max_length=250, blank=True, null=True)
     html_url = models.CharField(
         _('Html Url'), max_length=250, blank=True, null=True)
-    followers_url = models.CharField(
-        _('Followers Url'), max_length=250, blank=True, null=True)
+    followers = models.IntegerField(
+        _('Followers'), blank=True, null=True)
     following_url = models.CharField(
         _('Following Url'), max_length=250, blank=True, null=True)
     gists_url = models.CharField(
@@ -29,6 +29,9 @@ class UserDetails(models.Model):
         _('Organizations Url'), max_length=250, blank=True, null=True)
     repos = models.IntegerField(
         _('Repos'), blank=True, null=True)
+    location = models.CharField(
+        _("Location"), max_length=250, blank=True, null=True
+    )
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     last_updated = models.DateTimeField(auto_now=True, null=True)
     image = models.ImageField(upload_to='%Y/%m/%d', null=True, blank=True)
