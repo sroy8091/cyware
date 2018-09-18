@@ -12,3 +12,4 @@
 * Create a Report in Admin Panel of No of users added to the database in a day, week and month. Also, how many search API calls has been made in a day, week and month.- partly done
   * Summary of user added in day and month not in week
   * Same goes for api hits also.
+# This is not the official repo of the company. It's my assigment and I have uploaded everything for evaluation purpose only.
